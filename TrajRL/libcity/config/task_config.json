@@ -1,0 +1,9 @@
+{
+    "trajectory_embedding": {
+        "TrajRL": {
+            "dataset_class": "ContrastiveLMDataset",
+            "executor": "PatchContrastiveMLMExecutor",
+            "evaluator": "MultiClassificationEvaluator"
+        }
+    }
+}
