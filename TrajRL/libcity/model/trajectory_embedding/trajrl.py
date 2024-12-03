@@ -14,7 +14,7 @@ class TrajRLContrastiveLM(nn.Module):
         self.config = config
 
 
-        self.multilayergat2patchtst = TrajRL(config, data_feature)
+        self.trajrl = TrajRL(config, data_feature)
 
     def forward(self, contra_view1, contra_view2, masked_input, padding_masks,
                 batch_temporal_mat, padding_masks1=None, padding_masks2=None,
@@ -38,11 +38,11 @@ class TrajRLContrastiveLM(nn.Module):
             batch_temporal_mat1 = batch_temporal_mat
         if batch_temporal_mat2 is None:
             batch_temporal_mat2 = batch_temporal_mat
-        out_view1, _ ,_= self.multilayergat2patchtst(contra_view1, padding_masks=padding_masks1,
+        out_view1, _ ,_= self.trajrl(contra_view1,
                                                    temporal_mat=batch_temporal_mat1, graph_dict=graph_dict, mlm=True)
-        out_view2, _ ,_= self.multilayergat2patchtst(contra_view2, padding_masks=padding_masks2,
+        out_view2, _ ,_= self.trajrl(contra_view2,
                                                    temporal_mat=batch_temporal_mat2, graph_dict=graph_dict, mlm=True)
-        _, a ,mask= self.multilayergat2patchtst(masked_input, padding_masks=padding_masks, temporal_mat=batch_temporal_mat,
+        _, a ,mask= self.trajrl(masked_input, temporal_mat=batch_temporal_mat,
                                            graph_dict=graph_dict, mlm=True)
         # xb = self.pooler(xb)
         return out_view1, out_view2, a,mask
