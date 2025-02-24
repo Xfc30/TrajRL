@@ -1,5 +1,6 @@
 # TrajRL
-The Implementation of self-supervised Trajectory Representation Learning with multi-scale spatio-temporal feature
+The Implementation of self-supervised Trajectory Representation Learning with multi-scale spatio-temporal feature exploration
+
 ![image](https://github.com/user-attachments/assets/49fe8906-e0bf-4e9d-9d8c-f3e6b2c420a3)
 
 
